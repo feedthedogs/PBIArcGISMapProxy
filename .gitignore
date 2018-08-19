@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/PBIProxy/bin/Debug/netcoreapp2.1
+/PBIProxy/obj
+/PBIProxy/PBICert.pfx
+/PBIProxy/PBIProxy.csproj.user
+/PBIProxy/PBIStaticFiles/attribution/Vector
+/PBIProxy/PBIStaticFiles/powerbi/1.0.0.82
+/PBIProxy/PBIStaticFiles/sharing/rest/content/items
+/PBIProxy/PBIStaticFiles/sharing/rest/portals
+/PBIProxy/bin/Release/netcoreapp2.1
