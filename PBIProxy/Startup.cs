@@ -25,14 +25,7 @@ namespace PBIProxy
             _pbiTileServerURL = configuration["PBITileServerURL"];
             _geoCodeServerURL = configuration["GeoCodeServerURL"];
 
-            var proxy = new WebProxy()
-            {
-                Address = new Uri("http://192.168.2.7:8888")
-            };
-            var httpClientHandler = new HttpClientHandler()
-            {
-                Proxy = proxy,
-            };
+            var httpClientHandler = new HttpClientHandler();
             _httpClient = new HttpClient(httpClientHandler, false);
         }
 
