@@ -1,6 +1,8 @@
 # PBIArcGISMapProxy
 Proxies PowerBI maps to an onprem or offline ArcGIS instance
 
+Note: this only works on the normal version of PowerBI, the ReportServer version has maps disabled in hardcoded configuration
+
 
 Required on the Server:
 
