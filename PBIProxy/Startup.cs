@@ -25,8 +25,12 @@ namespace PBIProxy
             _pbiTileServerURL = configuration["PBITileServerURL"];
             _geoCodeServerURL = configuration["GeoCodeServerURL"];
 
-            var httpClientHandler = new HttpClientHandler();
+            var httpClientHandler = new HttpClientHandler()
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
             _httpClient = new HttpClient(httpClientHandler, false);
+            _httpClient.DefaultRequestHeaders.Referrer = new Uri("https://app.powerbi.com/");
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -80,16 +84,15 @@ namespace PBIProxy
                 var postContent = new FormUrlEncodedContent(formData);
                 var response = await _httpClient.PostAsync(_geoCodeServerURL, postContent);
 
-                string content = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {
                     context.Response.Headers.Add("Access-Control-Allow-Origin", "ms-pbi://pbi.microsoft.com");
-                    context.Response.ContentType = response.Content.Headers.ContentType.ToString();
-                    await context.Response.WriteAsync(content);
+                    var contentStream = await response.Content.ReadAsStreamAsync();
+                    await contentStream.CopyToAsync(context.Response.Body);
                 }
                 else
                 {
-                    await context.Response.WriteAsync("An error occurred: " + content);
+                    await context.Response.WriteAsync("An error occurred: " + response.Content.ReadAsStringAsync());
                 }
             });
         }
@@ -102,19 +105,19 @@ namespace PBIProxy
                 var ExtraURL = context.Request.Path.Value.Replace(_pbiTileServerURL, "");
                 var requestURL = $"{_tileServerURL}{ExtraURL}{context.Request.QueryString.Value}";
                 var response = await _httpClient.GetAsync(requestURL);
-
-                string content = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {
                     context.Response.Headers.Add("Access-Control-Allow-Origin", "ms-pbi://pbi.microsoft.com");
                     context.Response.ContentType = response.Content.Headers.ContentType.ToString();
                     context.Response.Headers.Add("Cache-Control", response.Headers.CacheControl.ToString());
                     context.Response.Headers.Add("Last-Modified", response.Content.Headers.LastModified.ToString());
-                    await context.Response.WriteAsync(content);
+
+                    var contentStream = await response.Content.ReadAsStreamAsync();
+                    await contentStream.CopyToAsync(context.Response.Body);
                 }
                 else
                 {
-                    await context.Response.WriteAsync("An error occurred: " + content);
+                    await context.Response.WriteAsync("An error occurred: " + response.Content.ReadAsStringAsync());
                 }
             });
         }
