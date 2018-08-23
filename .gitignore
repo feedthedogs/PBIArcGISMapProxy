@@ -7,8 +7,11 @@
 /PBIProxy/obj
 /PBIProxy/PBICert.pfx
 /PBIProxy/PBIProxy.csproj.user
+/PBIProxy/PBIStaticFiles/arcgis/rest/services/World_Basemap_v2
 /PBIProxy/PBIStaticFiles/attribution/Vector
 /PBIProxy/PBIStaticFiles/powerbi/1.0.0.82
 /PBIProxy/PBIStaticFiles/sharing/rest/content/items
 /PBIProxy/PBIStaticFiles/sharing/rest/portals
+/PBIProxy/PBIStaticFiles/usrsvcs/appservices/L7zl5sI0W1hBHWRI/rest/services/World/GeocodeServer
 /PBIProxy/bin/Release/netcoreapp2.1
+/PBIProxy/PBIStaticFiles/prod

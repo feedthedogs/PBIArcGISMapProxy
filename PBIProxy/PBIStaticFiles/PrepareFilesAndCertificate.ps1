@@ -2,7 +2,7 @@
 
 # This is for testing purposes, you should use a CA to sign a certificate and keep it in the Certificate Manager
 # Create a selfsigned certficiate with the list of domains
-$cert = New-SelfSignedCertificate -FriendlyName "PBIProxy" -KeyLength 2048 -certstorelocation Cert:\LocalMachine\My -DnsName "lacdn.arcgis.com", "www.arcgis.com","basemaps.arcgis.com","utility.arcgis.com","static.arcgis.com"
+$cert = New-SelfSignedCertificate -FriendlyName "PBIProxy" -KeyLength 2048 -certstorelocation Cert:\LocalMachine\My -DnsName "lacdn.arcgis.com", "www.arcgis.com","basemaps.arcgis.com","utility.arcgis.com","static.arcgis.com","visuals.azureedge.net"
 # Move it to be trusted as a Root CA
 Move-Item (Join-Path Cert:\LocalMachine\My $cert.Thumbprint) -Destination Cert:\LocalMachine\Root
 

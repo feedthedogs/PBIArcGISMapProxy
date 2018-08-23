@@ -242,3 +242,5 @@ https://www.arcgis.com/sharing/rest/content/items/fb7b28e5633843eda9c78a31f70af0
 https://www.arcgis.com/sharing/rest/content/items/fea6eb2ceea54607a28b10584ad7eedf/info/thumbnail/thumbnail.png
 https://www.arcgis.com/sharing/rest/content/items/ff41d25ef4184cb9b120b460e7493e4d/info/thumbnail/thumbnail.png
 https://www.arcgis.com/sharing/rest/portals/self?culture=en-us&f=json
+https://visuals.azureedge.net/prod/approvedResources.json
+https://visuals.azureedge.net/prod/1.10.0/esriVisual.pbiviz.json
