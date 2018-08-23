@@ -40,4 +40,6 @@ C:\Windows\System32\drivers\etc\hosts (open as administrator)
 	
 	127.0.0.1       utility.arcgis.com
 	
-	127.0.0.1		static.arcgis.com
+	127.0.0.1       static.arcgis.com
+	
+	127.0.0.1       visuals.azureedge.net
